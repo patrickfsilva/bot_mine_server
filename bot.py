@@ -2,8 +2,8 @@ import discord
 import requests
 import json
 
-TOKEN = "f04eeb8bc3a2b458680a28d34002ba6ec75dcbc206be08cfd179e63286d3484d"
-API_URL = "https://t1r317vrsg.execute-api.sa-east-1.amazonaws.com/default/MinecraftServerControl"
+TOKEN = "MTM0NDA5MjI0ODI5OTUzNjQzMA.G5SDi-.HemuHaGBegM4HSv8mEtbOqG6PYo3YnVBChSe2A"
+API_URL = "https://5xbs2ztrxh.execute-api.sa-east-1.amazonaws.com/GrehServMine"
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -26,8 +26,16 @@ async def on_message(message):
         if "ip" in data:
             await message.channel.send(f"✅ Servidor iniciado! IP: `{data['ip']}`")
         else:
+            await message.channel.send("⚠️ Servidor iniciado, IP: 18.231.28.175:26565.")
+    elif message.content.startswith("!status"):
+        await message.channel.send("🟢 Iniciando a consulta...")
+        response = requests.post(API_URL, json={"action": "status"})
+        data = response.json()
+        if "ip" in data:
+            await message.channel.send(f"✅ Servidor iniciado! IP: `{data['ip']}`")
+        else:
             await message.channel.send("⚠️ Servidor iniciado, mas o IP ainda não está disponível.")
-
+    
     elif message.content.startswith("!stop"):
         response = requests.post(API_URL, json={"action": "stop"})
         await message.channel.send("🔴 Parando o servidor...")
