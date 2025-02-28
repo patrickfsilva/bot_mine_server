@@ -2,7 +2,7 @@ import discord
 import requests
 import json
 
-TOKEN = "MTM0NDA5MjI0ODI5OTUzNjQzMA.G5SDi-.HemuHaGBegM4HSv8mEtbOqG6PYo3YnVBChSe2A"
+TOKEN = "XXXXXXXXXXXXXXXXXXXXXXXXxx"
 API_URL = "https://5xbs2ztrxh.execute-api.sa-east-1.amazonaws.com/GrehServMine"
 
 intents = discord.Intents.default()
